@@ -7,17 +7,37 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class StartTableVC: UITableViewController {
+    
+    let subwayStation = ["역곡역","고려대역","남한산성입구역","오리역","잠실역"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: StartTableCell1.reuseIdentifier) as! StartTableCell1
+            
+          //  cell.searchBtn
+            
+//            cell.nickNameLabel.text = boards[indexPath.row]
+//            cell.searchTxt.inputView = pickerView
+//            cell.searchBtn(<#T##sender: Any##Any#>).inputAccessoryView = bar
+            return cell
+            
+        } else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: StartTableCell2.reuseIdentifier) as! StartTableCell2
+//            cell.addBtn.addTarget(self, action: #selector(addTextField), for: UIControlEvents.touchUpInside)
+//            cell.registerBtn.addTarget(self, action: #selector(registerStoreBtn), for: UIControlEvents.touchUpInside)
+        
+            
+            return cell
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,16 +47,24 @@ class StartTableVC: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+    
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        if section == 0 {
+            return 1
+        } else {
+            return subwayStation.count
+        }
     }
-
+    
+    
+    //테이블 셀 선택했을 때!
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        <#code#>
+//    }
+ 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

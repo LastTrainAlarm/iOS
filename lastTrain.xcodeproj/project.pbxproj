@@ -16,6 +16,10 @@
 		7C3AF28E2154CED900D562FE /* NearStartTableCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3AF28D2154CED900D562FE /* NearStartTableCell2.swift */; };
 		7C3AF2902154D82800D562FE /* ArriveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3AF28F2154D82800D562FE /* ArriveVC.swift */; };
 		7CB0FD8A2155F28800F68180 /* NMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0FD892155F28800F68180 /* NMapVC.swift */; };
+		7CB0FD8F21561B8300F68180 /* LoginVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0FD8E21561B8300F68180 /* LoginVO.swift */; };
+		7CB0FD9121561BC700F68180 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0FD9021561BC700F68180 /* APIService.swift */; };
+		7CB0FD9321561BE900F68180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0FD9221561BE900F68180 /* Extensions.swift */; };
+		7CB0FD9721561F7700F68180 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0FD9621561F7700F68180 /* SignUpVC.swift */; };
 		7CBCB2A6214F4AD2001D4123 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBCB2A5214F4AD2001D4123 /* AppDelegate.swift */; };
 		7CBCB2AB214F4AD2001D4123 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CBCB2A9214F4AD2001D4123 /* Main.storyboard */; };
 		7CBCB2AD214F4AD4001D4123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CBCB2AC214F4AD4001D4123 /* Assets.xcassets */; };
@@ -52,6 +56,10 @@
 		7C3AF28D2154CED900D562FE /* NearStartTableCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearStartTableCell2.swift; sourceTree = "<group>"; };
 		7C3AF28F2154D82800D562FE /* ArriveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArriveVC.swift; sourceTree = "<group>"; };
 		7CB0FD892155F28800F68180 /* NMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMapVC.swift; sourceTree = "<group>"; };
+		7CB0FD8E21561B8300F68180 /* LoginVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVO.swift; sourceTree = "<group>"; };
+		7CB0FD9021561BC700F68180 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		7CB0FD9221561BE900F68180 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7CB0FD9621561F7700F68180 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7CBCB2A2214F4AD2001D4123 /* lastTrain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lastTrain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CBCB2A5214F4AD2001D4123 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CBCB2AA214F4AD2001D4123 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,10 +99,13 @@
 		7C3C588221539E3900BC368F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				7CB0FD8D21561B5600F68180 /* Data */,
 				7C3C588821539E6A00BC368F /* Service */,
 				7C3C588721539E6800BC368F /* Model */,
 				7C3C588621539E6500BC368F /* UI */,
 				7C3C588521539E6000BC368F /* Function */,
+				7CB0FD9021561BC700F68180 /* APIService.swift */,
+				7CB0FD9221561BE900F68180 /* Extensions.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -111,14 +122,10 @@
 		7C3C588421539E4200BC368F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7CB0FD99215627F200F68180 /* Enter */,
+				7CB0FD98215627DF00F68180 /* StartTable */,
 				7CFDD68A2155E166009E2C6D /* NMap */,
-				7C3AF27F2154874E00D562FE /* EnterVC.swift */,
-				7C3AF2812154883300D562FE /* StartTableVC.swift */,
-				7C3AF2832154884C00D562FE /* StartTableCell1.swift */,
-				7C3AF2852154886100D562FE /* StartTableCell2.swift */,
-				7C3AF2892154CEA600D562FE /* NearStartTableVC.swift */,
-				7C3AF28B2154CEC800D562FE /* NearStartTableCell1.swift */,
-				7C3AF28D2154CED900D562FE /* NearStartTableCell2.swift */,
+				7CB0FD9A2156280C00F68180 /* NearTable */,
 				7C3AF28F2154D82800D562FE /* ArriveVC.swift */,
 			);
 			path = ViewController;
@@ -152,6 +159,43 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		7CB0FD8D21561B5600F68180 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7CB0FD8E21561B8300F68180 /* LoginVO.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		7CB0FD98215627DF00F68180 /* StartTable */ = {
+			isa = PBXGroup;
+			children = (
+				7C3AF2812154883300D562FE /* StartTableVC.swift */,
+				7C3AF2832154884C00D562FE /* StartTableCell1.swift */,
+				7C3AF2852154886100D562FE /* StartTableCell2.swift */,
+			);
+			path = StartTable;
+			sourceTree = "<group>";
+		};
+		7CB0FD99215627F200F68180 /* Enter */ = {
+			isa = PBXGroup;
+			children = (
+				7C3AF27F2154874E00D562FE /* EnterVC.swift */,
+				7CB0FD9621561F7700F68180 /* SignUpVC.swift */,
+			);
+			path = Enter;
+			sourceTree = "<group>";
+		};
+		7CB0FD9A2156280C00F68180 /* NearTable */ = {
+			isa = PBXGroup;
+			children = (
+				7C3AF2892154CEA600D562FE /* NearStartTableVC.swift */,
+				7C3AF28B2154CEC800D562FE /* NearStartTableCell1.swift */,
+				7C3AF28D2154CED900D562FE /* NearStartTableCell2.swift */,
+			);
+			path = NearTable;
+			sourceTree = "<group>";
+		};
 		7CBCB299214F4AD2001D4123 = {
 			isa = PBXGroup;
 			children = (
@@ -175,8 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				7CBCB2A5214F4AD2001D4123 /* AppDelegate.swift */,
-				7C3C588421539E4200BC368F /* ViewController */,
 				7C3C588321539E3B00BC368F /* Storyboard */,
+				7C3C588421539E4200BC368F /* ViewController */,
 				7C3C588221539E3900BC368F /* Util */,
 				7C3C588121539E3500BC368F /* Asset */,
 				7CBCB2B1214F4AD4001D4123 /* Info.plist */,
@@ -368,14 +412,18 @@
 			files = (
 				7CB0FD8A2155F28800F68180 /* NMapVC.swift in Sources */,
 				7C3AF28A2154CEA700D562FE /* NearStartTableVC.swift in Sources */,
+				7CB0FD8F21561B8300F68180 /* LoginVO.swift in Sources */,
 				7C3AF28C2154CEC800D562FE /* NearStartTableCell1.swift in Sources */,
 				7C3AF28E2154CED900D562FE /* NearStartTableCell2.swift in Sources */,
 				7C3AF2862154886100D562FE /* StartTableCell2.swift in Sources */,
 				7CFDD68C2155E206009E2C6D /* NMapViewResources.swift in Sources */,
 				7C3AF2822154883300D562FE /* StartTableVC.swift in Sources */,
+				7CB0FD9121561BC700F68180 /* APIService.swift in Sources */,
+				7CB0FD9321561BE900F68180 /* Extensions.swift in Sources */,
 				7C3AF2842154884C00D562FE /* StartTableCell1.swift in Sources */,
 				7C3AF2802154874E00D562FE /* EnterVC.swift in Sources */,
 				7CBCB2A6214F4AD2001D4123 /* AppDelegate.swift in Sources */,
+				7CB0FD9721561F7700F68180 /* SignUpVC.swift in Sources */,
 				7C3AF2902154D82800D562FE /* ArriveVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

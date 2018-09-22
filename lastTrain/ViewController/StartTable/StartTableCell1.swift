@@ -10,6 +10,12 @@ import UIKit
 
 class StartTableCell1: UITableViewCell {
 
+    @IBOutlet weak var searchTxt: UITextField!
+    @IBOutlet weak var searchBtn: UIButton!
+    @IBOutlet weak var nearsearchBtn: UIButton!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +26,7 @@ class StartTableCell1: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+
 
 }
