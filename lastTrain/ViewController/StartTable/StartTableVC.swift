@@ -12,16 +12,28 @@ import SwiftyJSON
 
 class StartTableVC: UITableViewController {
     
-    let subwayStation = ["역곡역","고려대역","남한산성입구역","오리역","잠실역"]
 
+    
+    let subwayStation = ["역곡역","고려대역","남한산성입구역","오리역","잠실역"]
+    var keyboardDismissGesture: UITapGestureRecognizer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
     }
+  
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: StartTableCell1.reuseIdentifier) as! StartTableCell1
+            if indexPath.section == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: StartTableCell1.reuseIdentifier, for: indexPath) as! StartTableCell1
+            
+               cell.nearsearchBtn.addTarget(self, action: #selector(tappedsearchBtn(_:)), for: .touchUpInside)
+                
+                
+//                cell.searchBtn.tag = indexPath.row
+//                cell.searchBtn.addTarget(self, action: "tappedsearchBtn", for: UIControlEvents.touchUpInside)
             
           //  cell.searchBtn
             
@@ -31,15 +43,35 @@ class StartTableVC: UITableViewController {
             return cell
             
         } else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: StartTableCell2.reuseIdentifier) as! StartTableCell2
-//            cell.addBtn.addTarget(self, action: #selector(addTextField), for: UIControlEvents.touchUpInside)
-//            cell.registerBtn.addTarget(self, action: #selector(registerStoreBtn), for: UIControlEvents.touchUpInside)
-        
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: StartTableCell2.reuseIdentifier, for: indexPath) as! StartTableCell2
+
+            cell.stationLabel.text = subwayStation[indexPath.row]
+   
             return cell
         }
     }
 
+    @objc func tappedsearchBtn(_ sender : UIButton ){
+        if let NearStartTableVC = storyboard?.instantiateViewController(withIdentifier: "NearStartTableVC") as? NearStartTableVC {
+            self.navigationController?.pushViewController(NearStartTableVC, animated: true)
+        }
+        
+        //통신
+        
+        //        let buttonPosition = sender.convert(CGPoint.zero, to: self.followTableView)
+        //        let indexPath: IndexPath? = self.followTableView.indexPathForRow(at: buttonPosition)
+        //        let cell = self.followTableView.cellForRow(at: indexPath!) as! FollowCell
+        //        // 팔로우가 들어온다는 것은 아직 팔로잉 한 상태가 아니라는 것 => 그러니까 .isSelected = false
+        //        //팔로잉이 들어온다는 것은 팔로잉을 하고 있다는것 => 그러니까 .isSelected = true
+        //        if sender.isFollow! == "팔로우" {
+        //            likeAction(url: url("/user/follow"), userIdx : "\(sender.userIdx!)",  cell : cell, sender : sender )
+        //        } else {
+        //            dislikeAction(url: url("/user/unfollow/\(sender.userIdx!)"), cell : cell, sender : sender )
+        //        }
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -58,66 +90,74 @@ class StartTableVC: UITableViewController {
         }
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     
     //테이블 셀 선택했을 때!
     
 //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        <#code#>
 //    }
- 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
+
+
+
+extension StartTableVC {
+    
+    //////// 외우지 않아도 되는 부분입니다. 표시된 부분만 고쳐서 사용하세요. ////////
+    // 코드 설명 : 키보드가 나올 때 키보드의 높이를 계산해서 댓글 뷰가 키보드 위에 뜰 수 있도록 합니다.
+    //          view.frame을 조정하면 키보드가 나오고 들어갈 때 뷰가 움직이게 되겠지요?
+    //          notification : 옵저버라고 생각하시면 됩니다. 시점을 캐치하여 #selector()의 액션이 일어나도록 합니다.
+    //                          이 코드에서는 키보드가 나올 때, 들어갈 때 의 시점을 캐치하여 뷰의 frame을 조정합니다.
+    func setKeyboardSetting() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        adjustKeyboardDismissGesture(isKeyboardVisible: true)
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            //////// 키보드의 사이즈만큼 commentSendView의 y축을 위로 이동시킴 ////////
+           // commentSendView.frame.origin.y -= keyboardSize.height
+            ////////
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        adjustKeyboardDismissGesture(isKeyboardVisible: false)
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            //////// 키보드의 사이즈만큼 commentSendView의 y축을 아래로 이동시킴 ////////
+            //commentSendView.frame.origin.y += keyboardSize.height
+            ////////
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    //화면 바깥 터치했을때 키보드 없어지는 코드
+    func adjustKeyboardDismissGesture(isKeyboardVisible: Bool) {
+        if isKeyboardVisible {
+            if keyboardDismissGesture == nil {
+                keyboardDismissGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackground))
+                view.addGestureRecognizer(keyboardDismissGesture!)
+            }
+        } else {
+            if keyboardDismissGesture != nil {
+                view.removeGestureRecognizer(keyboardDismissGesture!)
+                keyboardDismissGesture = nil
+            }
+        }
+    }
+    
+    @objc func tapBackground() {
+        self.view.endEditing(true)
+    }
+    ////////
+}
+
+

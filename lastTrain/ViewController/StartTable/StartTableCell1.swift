@@ -15,7 +15,6 @@ class StartTableCell1: UITableViewCell {
     @IBOutlet weak var nearsearchBtn: UIButton!
     
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,6 +26,7 @@ class StartTableCell1: UITableViewCell {
         // Configure the view for the selected state
     }
     
+
 
 
 }

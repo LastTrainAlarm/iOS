@@ -96,7 +96,6 @@ extension UITableViewCell {
     }
 }
 
-
 ////갤러리
 
 

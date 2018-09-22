@@ -13,12 +13,7 @@ class NearStartTableVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,20 +25,38 @@ class NearStartTableVC: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return subwayStation.count
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        if section == 0 {
+            return 1
+        } else {
+            return subwayStation.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NearStartTabelCell2", for: indexPath)  //identifier가 reuseIdentifier인 것을 cell에 넣어주고 리턴
+       // let cell = tableView.dequeueReusableCell(withIdentifier: "NearStartTabelCell2", for: indexPath)  //identifier가 reuseIdentifier인 것을 cell에 넣어주고 리턴
         
-        cell.textLabel?.text = subwayStation[indexPath.row]
+        //cell.textLabel?.text = subwayStation[indexPath.row]
         
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NearStartTableCell1.reuseIdentifier, for: indexPath) as! NearStartTableCell1
+            
+           // cell.nearsearchBtn.addTarget(self, action: #selector(tappedsearchBtn(_:)), for: .touchUpInside)
+            
+
+            return cell
+            
+        } else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: NearStartTableCell2.reuseIdentifier, for: indexPath) as! NearStartTableCell2
+            
+            cell.nearstationLabel.text = subwayStation[indexPath.row]
+            
+            return cell
+        }
+
     }
 
     /*

@@ -10,6 +10,8 @@ import UIKit
 
 class NearStartTableCell2: UITableViewCell {
 
+    @IBOutlet weak var nearstationLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
