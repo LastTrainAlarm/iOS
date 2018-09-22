@@ -1,20 +1,24 @@
 //
-//  NearStartTableVC.swift
+//  ArriveTableVC.swift
 //  lastTrain
 //
-//  Created by 양어진 on 2018. 9. 21..
+//  Created by 양어진 on 2018. 9. 23..
 //  Copyright © 2018년 양어진. All rights reserved.
 //
 
 import UIKit
 
-class NearStartTableVC: UITableViewController {
+class ArriveTableVC: UITableViewController {
     let subwayStation = ["역곡역","고려대역","남한산성입구역","오리역","잠실역"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,38 +42,22 @@ class NearStartTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       // let cell = tableView.dequeueReusableCell(withIdentifier: "NearStartTabelCell2", for: indexPath)  //identifier가 reuseIdentifier인 것을 cell에 넣어주고 리턴
-        
-        //cell.textLabel?.text = subwayStation[indexPath.row]
-        
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: NearStartTableCell1.reuseIdentifier, for: indexPath) as! NearStartTableCell1
+            let cell = tableView.dequeueReusableCell(withIdentifier: ArriveTableCell1.reuseIdentifier, for: indexPath) as! ArriveTableCell1
             
-           // cell.nearsearchBtn.addTarget(self, action: #selector(tappedsearchBtn(_:)), for: .touchUpInside)
+            // cell.nearsearchBtn.addTarget(self, action: #selector(tappedsearchBtn(_:)), for: .touchUpInside)
             
             cell.selectionStyle = .none
             return cell
             
         } else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: NearStartTableCell2.reuseIdentifier, for: indexPath) as! NearStartTableCell2
+            let cell = tableView.dequeueReusableCell(withIdentifier: ArriveTableCell2.reuseIdentifier, for: indexPath) as! ArriveTableCell2
             
-            cell.nearstationLabel.text = subwayStation[indexPath.row]
+            cell.stationLabel.text = subwayStation[indexPath.row]
             cell.selectionStyle = .none
             
             return cell
         }
-
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section != 0 {
-            let ArriveTableVC = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "ArriveTableVC") as! ArriveTableVC
-            
-            //ArriveVC.selectedStore = subwayStation[indexPath.row]
-            self.navigationController?.pushViewController(ArriveTableVC, animated: true)
-        }
-        
     }
 
     /*

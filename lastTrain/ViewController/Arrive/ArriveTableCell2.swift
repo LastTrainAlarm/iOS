@@ -1,19 +1,16 @@
 //
-//  StartTableCell2.swift
+//  ArriveTableCell2.swift
 //  lastTrain
 //
-//  Created by 양어진 on 2018. 9. 21..
+//  Created by 양어진 on 2018. 9. 23..
 //  Copyright © 2018년 양어진. All rights reserved.
 //
 
 import UIKit
 
-class StartTableCell2: UITableViewCell {
-
-    
-    @IBOutlet weak var starBtn: UIButton!
+class ArriveTableCell2: UITableViewCell {
     @IBOutlet weak var stationLabel: UILabel!
-    
+    @IBOutlet weak var starBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

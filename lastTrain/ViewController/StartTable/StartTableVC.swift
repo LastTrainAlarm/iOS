@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class StartTableVC: UITableViewController {
     
-
+    //var buttonOn = false;
     
     let subwayStation = ["역곡역","고려대역","남한산성입구역","오리역","잠실역"]
     var keyboardDismissGesture: UITapGestureRecognizer?
@@ -29,9 +29,9 @@ class StartTableVC: UITableViewController {
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: StartTableCell1.reuseIdentifier, for: indexPath) as! StartTableCell1
             
-               cell.nearsearchBtn.addTarget(self, action: #selector(tappedsearchBtn(_:)), for: .touchUpInside)
-                
-                
+                cell.nearsearchBtn.addTarget(self, action: #selector(tappedsearchBtn(_:)), for: .touchUpInside)
+                cell.selectionStyle = .none
+    
 //                cell.searchBtn.tag = indexPath.row
 //                cell.searchBtn.addTarget(self, action: "tappedsearchBtn", for: UIControlEvents.touchUpInside)
             
@@ -45,8 +45,18 @@ class StartTableVC: UITableViewController {
         } else{
             let cell = tableView.dequeueReusableCell(withIdentifier: StartTableCell2.reuseIdentifier, for: indexPath) as! StartTableCell2
 
-            cell.stationLabel.text = subwayStation[indexPath.row]
-   
+                cell.stationLabel.text = subwayStation[indexPath.row]
+                cell.starBtn.setImage(UIImage(named: "starBtn"), for: .normal)
+                cell.selectionStyle = .none
+//                ///틀려쭘...ㅜㅜㅜㅜㅜ멀까~~~~~~~~~~~~~~~~~???? 자꾸 재사용 돼서 그러는 것 가틈.
+//                if buttonOn == false{
+//
+//                    buttonOn = true;
+//                } else {
+//                    cell.starBtn.setImage(UIImage(named: "emptyStarBtn"), for: .normal)
+//                    buttonOn = false;
+//                }
+                
             return cell
         }
     }
@@ -55,7 +65,6 @@ class StartTableVC: UITableViewController {
         if let NearStartTableVC = storyboard?.instantiateViewController(withIdentifier: "NearStartTableVC") as? NearStartTableVC {
             self.navigationController?.pushViewController(NearStartTableVC, animated: true)
         }
-        
         //통신
         
         //        let buttonPosition = sender.convert(CGPoint.zero, to: self.followTableView)
@@ -68,6 +77,9 @@ class StartTableVC: UITableViewController {
         //        } else {
         //            dislikeAction(url: url("/user/unfollow/\(sender.userIdx!)"), cell : cell, sender : sender )
         //        }
+    }
+    
+    @objc func tappedstarBtn(_ sender : UIButton ){
         
     }
     
@@ -77,9 +89,6 @@ class StartTableVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
-    
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

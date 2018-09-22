@@ -12,6 +12,8 @@ class SignUpVC: UIViewController {
 
     @IBOutlet weak var idTxt: UITextField!
     @IBOutlet weak var pwTxt: UITextField!
+    @IBOutlet weak var emailTxt: UITextField!
+    @IBOutlet weak var nameTxt: UITextField!
     @IBOutlet weak var signupBtn: UIButton!
     
     override func viewDidLoad() {
@@ -20,6 +22,8 @@ class SignUpVC: UIViewController {
        
         pwTxt.addTarget(self, action: #selector(isValid), for: .editingChanged)
         idTxt.addTarget(self, action: #selector(isValid), for: .editingChanged)
+        emailTxt.addTarget(self, action: #selector(isValid), for: .editingChanged)
+        nameTxt.addTarget(self, action: #selector(isValid), for: .editingChanged)
         
         signupBtn.isEnabled = false
         signupBtn.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -64,7 +68,7 @@ class SignUpVC: UIViewController {
      }
  
     @objc func isValid(){
-        if (!(idTxt.text?.isEmpty)! && !(pwTxt.text?.isEmpty)!){
+        if (!(idTxt.text?.isEmpty)! && !(pwTxt.text?.isEmpty)! && !(emailTxt.text?.isEmpty)! && !(nameTxt.text?.isEmpty)!){
             signupBtn.isEnabled = true
             signupBtn.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
             
