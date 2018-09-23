@@ -30,6 +30,13 @@
 		7CBCB2AB214F4AD2001D4123 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CBCB2A9214F4AD2001D4123 /* Main.storyboard */; };
 		7CBCB2AD214F4AD4001D4123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CBCB2AC214F4AD4001D4123 /* Assets.xcassets */; };
 		7CBCB2B0214F4AD4001D4123 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CBCB2AE214F4AD4001D4123 /* LaunchScreen.storyboard */; };
+		7CDCCF3F215808ED00E80018 /* PostableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF3E215808ED00E80018 /* PostableService.swift */; };
+		7CDCCF412158092C00E80018 /* GettableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF402158092C00E80018 /* GettableService.swift */; };
+		7CDCCF43215809E000E80018 /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF42215809E000E80018 /* enums.swift */; };
+		7CDCCF4521580A0B00E80018 /* HttpResponseCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF4421580A0B00E80018 /* HttpResponseCode.swift */; };
+		7CDCCF4921580A5400E80018 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF4821580A5400E80018 /* LoginService.swift */; };
+		7CDCCF4B21580F7100E80018 /* JoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF4A21580F7100E80018 /* JoinService.swift */; };
+		7CDCCF4D21580F9F00E80018 /* DefaultVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF4C21580F9F00E80018 /* DefaultVO.swift */; };
 		7CFDD683215523AA009E2C6D /* ApiGatewayMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CFDD682215523A9009E2C6D /* ApiGatewayMac.framework */; };
 		7CFDD684215523AA009E2C6D /* ApiGatewayMac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7CFDD682215523A9009E2C6D /* ApiGatewayMac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7CFDD68721552453009E2C6D /* NMapViewerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CFDD68621552453009E2C6D /* NMapViewerSDK.framework */; };
@@ -78,6 +85,13 @@
 		7CBCB2AC214F4AD4001D4123 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CBCB2AF214F4AD4001D4123 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CBCB2B1214F4AD4001D4123 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CDCCF3E215808ED00E80018 /* PostableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostableService.swift; sourceTree = "<group>"; };
+		7CDCCF402158092C00E80018 /* GettableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettableService.swift; sourceTree = "<group>"; };
+		7CDCCF42215809E000E80018 /* enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enums.swift; sourceTree = "<group>"; };
+		7CDCCF4421580A0B00E80018 /* HttpResponseCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResponseCode.swift; sourceTree = "<group>"; };
+		7CDCCF4821580A5400E80018 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		7CDCCF4A21580F7100E80018 /* JoinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinService.swift; sourceTree = "<group>"; };
+		7CDCCF4C21580F9F00E80018 /* DefaultVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultVO.swift; sourceTree = "<group>"; };
 		7CFDD682215523A9009E2C6D /* ApiGatewayMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ApiGatewayMac.framework; sourceTree = "<group>"; };
 		7CFDD68621552453009E2C6D /* NMapViewerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMapViewerSDK.framework; path = "../../../Desktop/maps.ios-master/Frameworks/NMapViewerSDK.framework"; sourceTree = "<group>"; };
 		7CFDD689215528A4009E2C6D /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
@@ -111,13 +125,13 @@
 		7C3C588221539E3900BC368F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				7CDCCF4721580A2700E80018 /* Utility */,
+				7CDCCF4621580A1800E80018 /* Singleton */,
 				7CB0FD8D21561B5600F68180 /* Data */,
 				7C3C588821539E6A00BC368F /* Service */,
 				7C3C588721539E6800BC368F /* Model */,
 				7C3C588621539E6500BC368F /* UI */,
 				7C3C588521539E6000BC368F /* Function */,
-				7CB0FD9021561BC700F68180 /* APIService.swift */,
-				7CB0FD9221561BE900F68180 /* Extensions.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -169,6 +183,8 @@
 		7C3C588821539E6A00BC368F /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				7CDCCF4821580A5400E80018 /* LoginService.swift */,
+				7CDCCF4A21580F7100E80018 /* JoinService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -187,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				7CB0FD8E21561B8300F68180 /* LoginVO.swift */,
+				7CDCCF4C21580F9F00E80018 /* DefaultVO.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -261,6 +278,26 @@
 				7CFDD689215528A4009E2C6D /* Header.h */,
 			);
 			path = lastTrain;
+			sourceTree = "<group>";
+		};
+		7CDCCF4621580A1800E80018 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				7CDCCF42215809E000E80018 /* enums.swift */,
+				7CDCCF4421580A0B00E80018 /* HttpResponseCode.swift */,
+			);
+			path = Singleton;
+			sourceTree = "<group>";
+		};
+		7CDCCF4721580A2700E80018 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				7CB0FD9021561BC700F68180 /* APIService.swift */,
+				7CB0FD9221561BE900F68180 /* Extensions.swift */,
+				7CDCCF3E215808ED00E80018 /* PostableService.swift */,
+				7CDCCF402158092C00E80018 /* GettableService.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		7CFDD68A2155E166009E2C6D /* NMap */ = {
@@ -445,11 +482,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CB0FD8A2155F28800F68180 /* NMapVC.swift in Sources */,
+				7CDCCF4921580A5400E80018 /* LoginService.swift in Sources */,
 				7C3AF28A2154CEA700D562FE /* NearStartTableVC.swift in Sources */,
 				7CB0FD8F21561B8300F68180 /* LoginVO.swift in Sources */,
+				7CDCCF3F215808ED00E80018 /* PostableService.swift in Sources */,
 				7C66C49D21575AE100EA14FE /* LastTimeTableVC.swift in Sources */,
 				7C3AF28C2154CEC800D562FE /* NearStartTableCell1.swift in Sources */,
 				7C3AF28E2154CED900D562FE /* NearStartTableCell2.swift in Sources */,
+				7CDCCF4D21580F9F00E80018 /* DefaultVO.swift in Sources */,
 				7C3AF2862154886100D562FE /* StartTableCell2.swift in Sources */,
 				7CB0FD9F2156E6AC00F68180 /* ArriveTableCell1.swift in Sources */,
 				7CFDD68C2155E206009E2C6D /* NMapViewResources.swift in Sources */,
@@ -463,8 +503,12 @@
 				7C66C49F21575B1000EA14FE /* LastTimeTableCell1.swift in Sources */,
 				7C3AF2802154874E00D562FE /* EnterVC.swift in Sources */,
 				7CBCB2A6214F4AD2001D4123 /* AppDelegate.swift in Sources */,
+				7CDCCF412158092C00E80018 /* GettableService.swift in Sources */,
 				7CB0FD9721561F7700F68180 /* SignUpVC.swift in Sources */,
+				7CDCCF43215809E000E80018 /* enums.swift in Sources */,
 				7CB0FDA12156E6BE00F68180 /* ArriveTableCell2.swift in Sources */,
+				7CDCCF4B21580F7100E80018 /* JoinService.swift in Sources */,
+				7CDCCF4521580A0B00E80018 /* HttpResponseCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

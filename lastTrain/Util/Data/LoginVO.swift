@@ -10,12 +10,14 @@ import Foundation
 struct LoginVO: Codable {
     let status : Bool
     let message: String
-    let userIdx : Int?
+    let user_id : Int?
+    let user_pw : Int?
     
     enum CodingKeys: String, CodingKey {
         case status = "status"
         case message = "message"
-        case userIdx = "user_idx"
+        case user_id = "user_id"
+        case user_pw = "user_pw"
     }
     
 }

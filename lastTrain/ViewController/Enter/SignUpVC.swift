@@ -10,8 +10,8 @@ import UIKit
 
 class SignUpVC: UIViewController, APIService {
     
-    let userId : String = "user_id"
-    let userPwd : String = "user_pw"
+    let user_id : String = "user_id"
+    let user_pw : String = "user_pw"
 
     var keyboardDismissGesture: UITapGestureRecognizer?
     @IBOutlet weak var idTxt: UITextField!
@@ -32,16 +32,18 @@ class SignUpVC: UIViewController, APIService {
         signupBtn.isEnabled = false
         signupBtn.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         
+        signupBtn.addTarget(self, action: #selector(joinBtnClick(_:)), for: UIControlEvents.touchUpInside)
+        
     }
-/*
+
     @objc func joinBtnClick(_ sender:UIButton){
         
         let params: [String:Any] = [
-            userId : gsno(idTxt.text),
-            userPwd : gsno(pwTxt.text)
+            user_id : gsno(idTxt.text),
+            user_pw : gsno(pwTxt.text)
         ]
         
-        JoinService.shareInstance.join(url: url("/signup"), params: params, completion: { [weak self] (result) in
+        JoinService.shareInstance.join(url: url("/auth"), params: params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
             
             switch result {
@@ -63,11 +65,11 @@ class SignUpVC: UIViewController, APIService {
             
         })
     }
-*/
-     
-     func joinOkHandler(_ sender:UIAlertAction) -> Void {
-     self.navigationController?.popViewController(animated: false)
-     }
+
+    
+    func joinOkHandler(_ sender:UIAlertAction) -> Void {
+        self.navigationController?.popViewController(animated: false)
+    }
  
     @objc func isValid(){
         if (!(idTxt.text?.isEmpty)! && !(pwTxt.text?.isEmpty)! && !(emailTxt.text?.isEmpty)! && !(nameTxt.text?.isEmpty)!){

@@ -8,14 +8,15 @@
 
 import UIKit
 
-class EnterVC: UIViewController {
+class EnterVC: UIViewController, APIService {
 
     @IBOutlet weak var idTxt: UITextField!
     @IBOutlet weak var pwTxt: UITextField!
     
     var keyboardDismissGesture: UITapGestureRecognizer?
-    let userId : String = "user_id"
-    let userPwd : String = "user_pw"
+    let user_id : String = "user_id"
+    let user_pw : String = "user_pw"
+    let userDefault = UserDefaults.standard
     
     @IBAction func signupBtn(_ sender: Any) {
         if let SignUpVC = storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as? SignUpVC {
@@ -31,22 +32,22 @@ class EnterVC: UIViewController {
         }
         
         let params: [String:Any] = [
-            userId : gsno(idTxt.text),
-            userPwd : gsno(pwTxt.text)
+            user_id : gsno(idTxt.text),
+            user_pw : gsno(pwTxt.text)
         ]
         
         //network
-        /*
-        LoginService.shareInstance.login(url: url("/signin"), params: params, completion: { [weak self] (result) in
+        
+        LoginService.shareInstance.login(url: url("/auth/signin"), params: params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
             
             switch result {
-            case .networkSuccess(let userIdx):
-                self.userDefault.set((userIdx as? Int), forKey: "userIdx")
-                self.userDefault.set(self.idTxt.text, forKey: "userId")
+            case .networkSuccess(let user_id):
+                self.userDefault.set((user_id as? Int), forKey: "user_id")
+                self.userDefault.set(self.idTxt.text, forKey: "user_id")
                 
-                let boardVCNavi = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navi")
-                self.present(boardVCNavi, animated: true, completion: nil)
+//                let boardVCNavi = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navi")
+//                self.present(boardVCNavi, animated: true, completion: nil)
                 break
             case .wrongInput :
                 self.simpleAlert(title: "오류", message: "아이디와 비밀번호를 확인해주세요")
@@ -61,7 +62,7 @@ class EnterVC: UIViewController {
                 break
             }
         })
-        */
+        
         
         if let StartTableVC = storyboard?.instantiateViewController(withIdentifier: "StartTableVC") as? StartTableVC {
             
