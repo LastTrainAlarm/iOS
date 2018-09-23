@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import Foundation
 
 class FromNowOnVC: UIViewController {
 
     @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var secLabel: UILabel!
+    @IBOutlet weak var remainLabel: UILabel!
     @IBAction func alarmSetBtn(_ sender: Any) {
         
     }
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,22 +27,20 @@ class FromNowOnVC: UIViewController {
 //        let notificationSettings = UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
 //        alarmapp.registerUserNotificationSettings(notificationSettings)
 //
-    }
+        var date = Date()
+        var cal = Calendar.current
+        
+        var currentMin = cal.component(.minute, from: date)
+        var currentSec = cal.component(.second, from: date)
+        
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        minLabel.text = String(currentMin)
+        secLabel.text = String(currentSec)
+        
+        
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ 
+   
 
 }

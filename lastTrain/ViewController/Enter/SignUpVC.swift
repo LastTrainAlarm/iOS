@@ -13,6 +13,7 @@ class SignUpVC: UIViewController, APIService {
     let userId : String = "user_id"
     let userPwd : String = "user_pw"
 
+    var keyboardDismissGesture: UITapGestureRecognizer?
     @IBOutlet weak var idTxt: UITextField!
     @IBOutlet weak var pwTxt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
@@ -81,5 +82,4 @@ class SignUpVC: UIViewController, APIService {
     
 
 }
-
 

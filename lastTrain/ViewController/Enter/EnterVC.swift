@@ -13,6 +13,7 @@ class EnterVC: UIViewController {
     @IBOutlet weak var idTxt: UITextField!
     @IBOutlet weak var pwTxt: UITextField!
     
+    var keyboardDismissGesture: UITapGestureRecognizer?
     let userId : String = "user_id"
     let userPwd : String = "user_pw"
     
@@ -84,3 +85,5 @@ class EnterVC: UIViewController {
     
 
 }
+
+
