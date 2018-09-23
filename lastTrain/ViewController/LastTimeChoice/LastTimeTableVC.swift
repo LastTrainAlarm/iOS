@@ -1,5 +1,5 @@
 //
-//  ArriveTableVC.swift
+//  LastTimeTableVC.swift
 //  lastTrain
 //
 //  Created by 양어진 on 2018. 9. 23..
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ArriveTableVC: UITableViewController {
-    let subwayStation = ["역곡역","고려대역","남한산성입구역","오리역","잠실역"]
-    
+class LastTimeTableVC: UITableViewController {
+   let timearr = [11,22,33]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,55 +34,43 @@ class ArriveTableVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 0{
             return 1
         } else {
-            return subwayStation.count
+            return 3
         }
     }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: ArriveTableCell1.reuseIdentifier, for: indexPath) as! ArriveTableCell1
-            
-            // cell.nearsearchBtn.addTarget(self, action: #selector(tappedsearchBtn(_:)), for: .touchUpInside)
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: LastTimeTableCell1.reuseIdentifier, for: indexPath) as! LastTimeTableCell1
+
             cell.selectionStyle = .none
             
             return cell
             
         } else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: ArriveTableCell2.reuseIdentifier, for: indexPath) as! ArriveTableCell2
-            
-            cell.stationLabel.text = subwayStation[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: LastTimeTableCell2.reuseIdentifier, for: indexPath) as! LastTimeTableCell2
+            let buttonText = String(timearr[indexPath.row]) + "분"
+            cell.lasttimeBtn.setTitle(buttonText, for: .normal)
+        
             cell.selectionStyle = .none
             
             
             return cell
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
- 
         if indexPath.section != 0 {
-            let LastTimeTableVC = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "LastTimeTableVC") as! LastTimeTableVC
+            let FromNowOnVC = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "FromNowOnVC") as! FromNowOnVC
             
             //ArriveVC.selectedStore = subwayStation[indexPath.row]
-            self.navigationController?.pushViewController(LastTimeTableVC, animated: true)
-      
+            self.navigationController?.pushViewController(FromNowOnVC, animated: true)
+            
         }
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

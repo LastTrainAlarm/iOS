@@ -79,9 +79,7 @@ class StartTableVC: UITableViewController {
         //        }
     }
     
-    @objc func tappedstarBtn(_ sender : UIButton ){
-        
-    }
+  
     
     
     override func didReceiveMemoryWarning() {
@@ -105,9 +103,14 @@ class StartTableVC: UITableViewController {
     
     //테이블 셀 선택했을 때!
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section != 0 {
+            let ArriveTableVC = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "ArriveTableVC") as! ArriveTableVC
+            
+            //ArriveVC.selectedStore = subwayStation[indexPath.row]
+            self.navigationController?.pushViewController(ArriveTableVC, animated: true)
+        }
+    }
 
 }
 

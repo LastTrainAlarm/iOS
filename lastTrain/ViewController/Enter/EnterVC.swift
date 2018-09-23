@@ -28,12 +28,12 @@ class EnterVC: UIViewController {
             simpleAlert(title: "로그인 실패", message: "모든 항목을 입력해 주세요")
             return
         }
-        /*
+        
         let params: [String:Any] = [
             userId : gsno(idTxt.text),
             userPwd : gsno(pwTxt.text)
         ]
-        */
+        
         //network
         /*
         LoginService.shareInstance.login(url: url("/signin"), params: params, completion: { [weak self] (result) in

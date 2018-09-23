@@ -1,19 +1,31 @@
 //
-//  ArriveVC.swift
+//  FromNowOnVC.swift
 //  lastTrain
 //
-//  Created by 양어진 on 2018. 9. 21..
+//  Created by 양어진 on 2018. 9. 23..
 //  Copyright © 2018년 양어진. All rights reserved.
 //
 
 import UIKit
 
-class ArriveVC: UIViewController {
+class FromNowOnVC: UIViewController {
 
+    @IBOutlet weak var minLabel: UILabel!
+    @IBOutlet weak var secLabel: UILabel!
+    @IBAction func alarmSetBtn(_ sender: Any) {
+        
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+//        //알람과 소리기능 허가받기
+//        let alarmapp = UIApplication.shared
+//        let notificationSettings = UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
+//        alarmapp.registerUserNotificationSettings(notificationSettings)
+//
     }
 
     override func didReceiveMemoryWarning() {

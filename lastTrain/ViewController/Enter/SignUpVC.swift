@@ -8,7 +8,10 @@
 
 import UIKit
 
-class SignUpVC: UIViewController {
+class SignUpVC: UIViewController, APIService {
+    
+    let userId : String = "user_id"
+    let userPwd : String = "user_pw"
 
     @IBOutlet weak var idTxt: UITextField!
     @IBOutlet weak var pwTxt: UITextField!
@@ -29,13 +32,12 @@ class SignUpVC: UIViewController {
         signupBtn.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         
     }
-
+/*
     @objc func joinBtnClick(_ sender:UIButton){
         
-        /*
         let params: [String:Any] = [
             userId : gsno(idTxt.text),
-            userPwd : gsno(pwdTxt.text)
+            userPwd : gsno(pwTxt.text)
         ]
         
         JoinService.shareInstance.join(url: url("/signup"), params: params, completion: { [weak self] (result) in
@@ -59,9 +61,8 @@ class SignUpVC: UIViewController {
             }
             
         })
- */
     }
-    
+*/
      
      func joinOkHandler(_ sender:UIAlertAction) -> Void {
      self.navigationController?.popViewController(animated: false)
