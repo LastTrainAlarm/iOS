@@ -22,9 +22,9 @@ struct JoinService: PostableService {
                     completion(.networkSuccess(""))
                 case "Null Value" :
                     completion(.nullValue)
-                case "Already Exists" :
+                case "Already Exist" :
                     completion(.duplicated)
-                case "Internal Server Error!" :
+                case "Internal Server Error" :
                     completion(.serverErr)
                 default :
                     break

@@ -10,8 +10,10 @@ import UIKit
 
 class SignUpVC: UIViewController, APIService {
     
-    let user_id : String = "user_id"
-    let user_pw : String = "user_pw"
+    let userId : String = "user_id"
+    let userPw : String = "user_pwd"
+    let userEmail : String = "user_email"
+    let userName : String = "user_name"
 
     var keyboardDismissGesture: UITapGestureRecognizer?
     @IBOutlet weak var idTxt: UITextField!
@@ -39,8 +41,10 @@ class SignUpVC: UIViewController, APIService {
     @objc func joinBtnClick(_ sender:UIButton){
         
         let params: [String:Any] = [
-            user_id : gsno(idTxt.text),
-            user_pw : gsno(pwTxt.text)
+            userId : gsno(idTxt.text),
+            userPw : gsno(pwTxt.text),
+            userEmail : gsno(emailTxt.text),
+            userName : gsno(nameTxt.text)
         ]
         
         JoinService.shareInstance.join(url: url("/auth"), params: params, completion: { [weak self] (result) in
@@ -68,7 +72,7 @@ class SignUpVC: UIViewController, APIService {
 
     
     func joinOkHandler(_ sender:UIAlertAction) -> Void {
-        self.navigationController?.popViewController(animated: false)
+        self.navigationController?.popViewController(animated: true)
     }
  
     @objc func isValid(){

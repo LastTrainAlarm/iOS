@@ -37,6 +37,9 @@
 		7CDCCF4921580A5400E80018 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF4821580A5400E80018 /* LoginService.swift */; };
 		7CDCCF4B21580F7100E80018 /* JoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF4A21580F7100E80018 /* JoinService.swift */; };
 		7CDCCF4D21580F9F00E80018 /* DefaultVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF4C21580F9F00E80018 /* DefaultVO.swift */; };
+		7CDCCF4F21592ABB00E80018 /* NearService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF4E21592ABB00E80018 /* NearService.swift */; };
+		7CDCCF5121592ADA00E80018 /* NearVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF5021592ADA00E80018 /* NearVO.swift */; };
+		7CDCCF5321592F1F00E80018 /* NearData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDCCF5221592F1F00E80018 /* NearData.swift */; };
 		7CFDD683215523AA009E2C6D /* ApiGatewayMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CFDD682215523A9009E2C6D /* ApiGatewayMac.framework */; };
 		7CFDD684215523AA009E2C6D /* ApiGatewayMac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7CFDD682215523A9009E2C6D /* ApiGatewayMac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7CFDD68721552453009E2C6D /* NMapViewerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CFDD68621552453009E2C6D /* NMapViewerSDK.framework */; };
@@ -92,6 +95,9 @@
 		7CDCCF4821580A5400E80018 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		7CDCCF4A21580F7100E80018 /* JoinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinService.swift; sourceTree = "<group>"; };
 		7CDCCF4C21580F9F00E80018 /* DefaultVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultVO.swift; sourceTree = "<group>"; };
+		7CDCCF4E21592ABB00E80018 /* NearService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearService.swift; sourceTree = "<group>"; };
+		7CDCCF5021592ADA00E80018 /* NearVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearVO.swift; sourceTree = "<group>"; };
+		7CDCCF5221592F1F00E80018 /* NearData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearData.swift; sourceTree = "<group>"; };
 		7CFDD682215523A9009E2C6D /* ApiGatewayMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ApiGatewayMac.framework; sourceTree = "<group>"; };
 		7CFDD68621552453009E2C6D /* NMapViewerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMapViewerSDK.framework; path = "../../../Desktop/maps.ios-master/Frameworks/NMapViewerSDK.framework"; sourceTree = "<group>"; };
 		7CFDD689215528A4009E2C6D /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
@@ -150,7 +156,6 @@
 			children = (
 				7CB0FD99215627F200F68180 /* Enter */,
 				7CB0FD98215627DF00F68180 /* StartTable */,
-				7CFDD68A2155E166009E2C6D /* NMap */,
 				7CB0FD9A2156280C00F68180 /* NearTable */,
 				7CB0FD9B2156E67200F68180 /* Arrive */,
 				7C66C49B21575AB200EA14FE /* LastTimeChoice */,
@@ -185,6 +190,7 @@
 			children = (
 				7CDCCF4821580A5400E80018 /* LoginService.swift */,
 				7CDCCF4A21580F7100E80018 /* JoinService.swift */,
+				7CDCCF4E21592ABB00E80018 /* NearService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -204,6 +210,8 @@
 			children = (
 				7CB0FD8E21561B8300F68180 /* LoginVO.swift */,
 				7CDCCF4C21580F9F00E80018 /* DefaultVO.swift */,
+				7CDCCF5021592ADA00E80018 /* NearVO.swift */,
+				7CDCCF5221592F1F00E80018 /* NearData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -273,6 +281,7 @@
 				7C3C588321539E3B00BC368F /* Storyboard */,
 				7C3C588421539E4200BC368F /* ViewController */,
 				7C3C588221539E3900BC368F /* Util */,
+				7CFDD68A2155E166009E2C6D /* NMap */,
 				7C3C588121539E3500BC368F /* Asset */,
 				7CBCB2B1214F4AD4001D4123 /* Info.plist */,
 				7CFDD689215528A4009E2C6D /* Header.h */,
@@ -499,9 +508,12 @@
 				7CB0FD9121561BC700F68180 /* APIService.swift in Sources */,
 				7C66C4A121575B2400EA14FE /* LastTimeTableCell2.swift in Sources */,
 				7CB0FD9321561BE900F68180 /* Extensions.swift in Sources */,
+				7CDCCF5321592F1F00E80018 /* NearData.swift in Sources */,
 				7C3AF2842154884C00D562FE /* StartTableCell1.swift in Sources */,
 				7C66C49F21575B1000EA14FE /* LastTimeTableCell1.swift in Sources */,
 				7C3AF2802154874E00D562FE /* EnterVC.swift in Sources */,
+				7CDCCF4F21592ABB00E80018 /* NearService.swift in Sources */,
+				7CDCCF5121592ADA00E80018 /* NearVO.swift in Sources */,
 				7CBCB2A6214F4AD2001D4123 /* AppDelegate.swift in Sources */,
 				7CDCCF412158092C00E80018 /* GettableService.swift in Sources */,
 				7CB0FD9721561F7700F68180 /* SignUpVC.swift in Sources */,

@@ -5,7 +5,6 @@
 //  Created by 양어진 on 2018. 9. 24..
 //  Copyright © 2018년 양어진. All rights reserved.
 //
-
 import Foundation
 import Alamofire
 import SwiftyJSON

@@ -14,26 +14,27 @@ import SwiftyJSON
 struct LoginService: PostableService {
     typealias NetworkData = LoginVO
     static let shareInstance = LoginService()
-    func login(url : String, params : [String : Any], completion : @escaping (NetworkResult<Any>) -> Void){
+    func loginInit(url : String, params : [String : Any], completion : @escaping (NetworkResult<Any>) -> Void){
         post(url, params: params) { (result) in
             switch result {
             case .success(let networkResult):
                 switch networkResult.message {
-                case "Login Success" :
-                    completion(.networkSuccess(self.gino(networkResult.user_id)))
+                case "Successfully sign in" :
+                    completion(.networkSuccess(networkResult.data))
                 case "Null Value" :
                     completion(.nullValue)
-                case "Login Failed" :
+                case "Login Failed - incorrect pw" , "Login Failed - incorrect id" :
                     completion(.wrongInput)
                 case "Internal Server Error!" :
                     completion(.serverErr)
                 default :
+                    print("loginError")
                     break
                 }
                 
                 break
             case .error(let errMsg) :
-                print(errMsg)
+                print(errMsg,"-LoginService")
                 break
             case .failure(_) :
                 completion(.networkFail)

@@ -7,17 +7,31 @@
 //
 
 import Foundation
+
 struct LoginVO: Codable {
+    let data: LoginVOData
+    let message: String
+}
+
+struct LoginVOData: Codable {
+    //let token: String
+    let userIdx : Int
+}
+/*
+struct LoginVO: Codable {
+    
+    //let data: LoginVOData
     let status : Bool
     let message: String
-    let user_id : Int?
-    let user_pw : Int?
+    let userIdx: Int?
     
     enum CodingKeys: String, CodingKey {
         case status = "status"
         case message = "message"
-        case user_id = "user_id"
-        case user_pw = "user_pw"
+        case userIdx = "user_idx"
     }
-    
 }
+*/
+
+
+

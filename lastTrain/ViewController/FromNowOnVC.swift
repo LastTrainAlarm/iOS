@@ -9,12 +9,14 @@
 import UIKit
 import Foundation
 
-class FromNowOnVC: UIViewController {
+class FromNowOnVC: UIViewController, APIService {
 
     @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var secLabel: UILabel!
     @IBOutlet weak var remainLabel: UILabel!
     @IBAction func alarmSetBtn(_ sender: Any) {
+       // let content = UNMutableNotificationContent()
+        
         
     }
 

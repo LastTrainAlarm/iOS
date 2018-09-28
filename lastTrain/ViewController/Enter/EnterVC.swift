@@ -14,9 +14,10 @@ class EnterVC: UIViewController, APIService {
     @IBOutlet weak var pwTxt: UITextField!
     
     var keyboardDismissGesture: UITapGestureRecognizer?
-    let user_id : String = "user_id"
-    let user_pw : String = "user_pw"
+    let userId : String = "user_id"
+    let userPw : String = "user_pwd"
     let userDefault = UserDefaults.standard
+    var userData : LoginVOData?
     
     @IBAction func signupBtn(_ sender: Any) {
         if let SignUpVC = storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as? SignUpVC {
@@ -32,22 +33,29 @@ class EnterVC: UIViewController, APIService {
         }
         
         let params: [String:Any] = [
-            user_id : gsno(idTxt.text),
-            user_pw : gsno(pwTxt.text)
+            userId : gsno(idTxt.text),
+            userPw : gsno(pwTxt.text)
         ]
         
         //network
         
-        LoginService.shareInstance.login(url: url("/auth/signin"), params: params, completion: { [weak self] (result) in
+        LoginService.shareInstance.loginInit(url: url("/auth/login"), params: params, completion: { [weak self] (result) in
             guard let `self` = self else { return }
             
             switch result {
-            case .networkSuccess(let user_id):
-                self.userDefault.set((user_id as? Int), forKey: "user_id")
-                self.userDefault.set(self.idTxt.text, forKey: "user_id")
+            case .networkSuccess (let loginData) : //(let userIdx):
+                //self.userDefault.set((userIdx as? Int), forKey: "userIdx")
+                //self.userDefault.set(self.idTxt.text, forKey: "userId")
+                self.userData = loginData as? LoginVOData
+                self.userDefault.set(self.userData?.userIdx, forKey: "userIdx")
+               //self.userDefault.set(self.userData?.token, forKey : "userToken")
+           
                 
-//                let boardVCNavi = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navi")
-//                self.present(boardVCNavi, animated: true, completion: nil)
+                //메인페이지로
+                let VCNavi = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navi")
+                self.present(VCNavi, animated: true, completion: nil)
+                
+                
                 break
             case .wrongInput :
                 self.simpleAlert(title: "오류", message: "아이디와 비밀번호를 확인해주세요")
@@ -63,7 +71,7 @@ class EnterVC: UIViewController, APIService {
             }
         })
         
-        
+        /*
         if let StartTableVC = storyboard?.instantiateViewController(withIdentifier: "StartTableVC") as? StartTableVC {
             
             //push
@@ -71,12 +79,17 @@ class EnterVC: UIViewController, APIService {
             //persent
             //self.navigationController?.show(StartTableVC, sender: true)
         }
+ */
+        
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         //네비게이션 컨트롤바 
         self.navigationController?.navigationBar.isHidden = false
+        self.pwTxt.text = ""
+        self.idTxt.text = ""
     }
     override func viewDidLoad() {
         super.viewDidLoad()

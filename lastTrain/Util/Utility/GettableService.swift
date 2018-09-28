@@ -12,8 +12,8 @@ import SwiftyJSON
 
 protocol GettableService {
     associatedtype NetworkData : Codable
-    func get(_ URL:String, completion : @escaping (Result<NetworkData>)->Void)
-    
+    typealias networkResult = (resCode : Int, resResult : NetworkData)
+    func get(_ URL:String, completion : @escaping (Result<networkResult>)->Void)
 }
 
 extension GettableService {
@@ -23,31 +23,58 @@ extension GettableService {
     }
     
     
-    
-    func get(_ URL:String, completion : @escaping (Result<NetworkData>)->Void){
-        Alamofire.request(URL).responseData {(res) in
+    func get(_ URL:String, completion : @escaping (Result<networkResult>)->Void){
+        guard let encodedUrl = URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("networking - invalid url")
+            return
+        }
+        
+        let userToken = UserDefaults.standard.string(forKey: "userToken") ?? "-1"
+        var headers: HTTPHeaders?
+        
+        if userToken != "-1" {
+            headers = [
+                "authorization" : userToken
+            ]
+        }
+        
+        Alamofire.request(encodedUrl, method: .get, parameters: nil, headers: headers).responseData {(res) in
+            print("encodedURL = ", encodedUrl)
+        
             switch res.result {
-            case .success :
                 
+            case .success :
                 if let value = res.result.value {
+                    print("networking Success!")
+                    print(encodedUrl)
+                    print(JSON(value))
+                    print(value)
                     
                     let decoder = JSONDecoder()
+                    print("1")
                     
-                    
-                    //do try catch 아예 컴플리션 쪽에서 처리가능
-                    // 통신 성공 자체를 .success 로 본다면.
                     do {
-                        let data = try decoder.decode(NetworkData.self, from: value)
+                        print("2")
                         
-                        completion(.success(data))
+                        let resCode = self.gino(res.response?.statusCode)
+                        print("3")
                         
-                    }catch{
                         
-                        completion(.error("에러"))
+                        let datas = try decoder.decode(NetworkData.self, from: value)
+                        print("4")
+                        let result : networkResult = (resCode, datas)
+                        print("5")
+                        completion(.success(result))
+                        print("success")
+                        
+                    } catch{
+                        completion(.error("error - GettableService"))
                     }
                 }
                 break
             case .failure(let err) :
+                print("network~~ error")
+                print(err)
                 completion(.failure(err))
                 break
             }

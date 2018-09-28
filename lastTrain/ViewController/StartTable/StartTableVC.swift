@@ -11,16 +11,14 @@ import Alamofire
 import SwiftyJSON
 
 class StartTableVC: UITableViewController {
-    
-    //var buttonOn = false;
-    
     let subwayStation = ["역곡역","고려대역","남한산성입구역","오리역","잠실역"]
+    var stations : [Near] = []
     var keyboardDismissGesture: UITapGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        setKeyboardSetting()
     }
   
     
@@ -29,7 +27,8 @@ class StartTableVC: UITableViewController {
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: StartTableCell1.reuseIdentifier, for: indexPath) as! StartTableCell1
             
-                cell.nearsearchBtn.addTarget(self, action: #selector(tappedsearchBtn(_:)), for: .touchUpInside)
+                cell.searchBtn.addTarget(self, action: #selector(tappedsearchBtn(_:)), for: .touchUpInside)
+                cell.nearsearchBtn.addTarget(self, action: #selector(tappedNearsearchBtn(_:)), for: .touchUpInside)
                 cell.selectionStyle = .none
     
 //                cell.searchBtn.tag = indexPath.row
@@ -39,29 +38,38 @@ class StartTableVC: UITableViewController {
             
 //            cell.nickNameLabel.text = boards[indexPath.row]
 //            cell.searchTxt.inputView = pickerView
-//            cell.searchBtn(<#T##sender: Any##Any#>).inputAccessoryView = bar
             return cell
-            
         } else{
             let cell = tableView.dequeueReusableCell(withIdentifier: StartTableCell2.reuseIdentifier, for: indexPath) as! StartTableCell2
 
                 cell.stationLabel.text = subwayStation[indexPath.row]
                 cell.starBtn.setImage(UIImage(named: "starBtn"), for: .normal)
                 cell.selectionStyle = .none
-//                ///틀려쭘...ㅜㅜㅜㅜㅜ멀까~~~~~~~~~~~~~~~~~???? 자꾸 재사용 돼서 그러는 것 가틈.
-//                if buttonOn == false{
-//
-//                    buttonOn = true;
-//                } else {
-//                    cell.starBtn.setImage(UIImage(named: "emptyStarBtn"), for: .normal)
-//                    buttonOn = false;
-//                }
+
                 
             return cell
         }
     }
 
     @objc func tappedsearchBtn(_ sender : UIButton ){
+        //self.simpleAlertwithHandler(title: "\(searchTxt)", message: "..호선", okHandler: nil)
+        //통신
+        
+        //        let buttonPosition = sender.convert(CGPoint.zero, to: self.followTableView)
+        //        let indexPath: IndexPath? = self.followTableView.indexPathForRow(at: buttonPosition)
+        //        let cell = self.followTableView.cellForRow(at: indexPath!) as! FollowCell
+        //        // 팔로우가 들어온다는 것은 아직 팔로잉 한 상태가 아니라는 것 => 그러니까 .isSelected = false
+        //        //팔로잉이 들어온다는 것은 팔로잉을 하고 있다는것 => 그러니까 .isSelected = true
+        //        if sender.isFollow! == "팔로우" {
+        //            likeAction(url: url("/user/follow"), userIdx : "\(sender.userIdx!)",  cell : cell, sender : sender )
+        //        } else {
+        //            dislikeAction(url: url("/user/unfollow/\(sender.userIdx!)"), cell : cell, sender : sender )
+        //        }
+        
+        
+    }
+    
+    @objc func tappedNearsearchBtn(_ sender : UIButton ){
         if let NearStartTableVC = storyboard?.instantiateViewController(withIdentifier: "NearStartTableVC") as? NearStartTableVC {
             self.navigationController?.pushViewController(NearStartTableVC, animated: true)
         }
@@ -77,6 +85,8 @@ class StartTableVC: UITableViewController {
         //        } else {
         //            dislikeAction(url: url("/user/unfollow/\(sender.userIdx!)"), cell : cell, sender : sender )
         //        }
+
+        
     }
     
   

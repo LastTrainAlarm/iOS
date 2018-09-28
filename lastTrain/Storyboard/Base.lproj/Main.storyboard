@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UU9-Ef-roZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0TN-h3-6SY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -324,10 +323,10 @@
             </objects>
             <point key="canvasLocation" x="4705" y="177"/>
         </scene>
-        <!--출발역 선택-->
+        <!--출발역-->
         <scene sceneID="gmQ-KU-0Kj">
             <objects>
-                <tableViewController storyboardIdentifier="StartTableVC" title="출발역 선택" id="5yb-V0-LhA" customClass="StartTableVC" customModule="lastTrain" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="StartTableVC" id="5yb-V0-LhA" customClass="StartTableVC" customModule="lastTrain" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kUT-vJ-2Jt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -454,10 +453,10 @@
             </objects>
             <point key="canvasLocation" x="3159" y="177"/>
         </scene>
-        <!--주변 출발역-->
+        <!--Near Start TableVC-->
         <scene sceneID="GtC-ds-2sF">
             <objects>
-                <tableViewController restorationIdentifier="NearStartTableVC" storyboardIdentifier="NearStartTableVC" title="주변 출발역" id="0TN-h3-6SY" customClass="NearStartTableVC" customModule="lastTrain" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="NearStartTableVC" storyboardIdentifier="NearStartTableVC" id="0TN-h3-6SY" customClass="NearStartTableVC" customModule="lastTrain" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hvg-fj-Oi4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -549,6 +548,7 @@
                                 <color key="backgroundColor" red="0.01176470588" green="0.062745098040000002" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="nearstationLabel" destination="v78-DB-k4A" id="54b-KD-HBB"/>
+                                    <outlet property="starBtn" destination="wiq-0E-sNe" id="atJ-Rc-VOe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -775,7 +775,7 @@
         <!--Navigation Controller-->
         <scene sceneID="0IT-jJ-KAf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KlQ-Zk-gpb" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="navi" storyboardIdentifier="navi" automaticallyAdjustsScrollViewInsets="NO" id="KlQ-Zk-gpb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XFR-ye-dyl">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
