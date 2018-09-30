@@ -71,7 +71,7 @@ class EnterVC: UIViewController, APIService {
             }
         })
         
-        /*
+        
         if let StartTableVC = storyboard?.instantiateViewController(withIdentifier: "StartTableVC") as? StartTableVC {
             
             //push
@@ -79,7 +79,7 @@ class EnterVC: UIViewController, APIService {
             //persent
             //self.navigationController?.show(StartTableVC, sender: true)
         }
- */
+ 
         
       
     }

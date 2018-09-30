@@ -9,18 +9,19 @@
 import UIKit
 
 class NearStartTableVC: UITableViewController, APIService {
-    //let subwayStation = ["역곡역","고려대역","남한산성입구역","오리역","잠실역"]
+    let subwayStation = ["역곡역","고려대역","남한산성입구역","오리역","잠실역"]
+    
+    /*
     var nearStations : [Near] = []
 
     let stationx = 37.554648
     let stationy = 126.972559
-    
-    //let locationManager = CLLocationManager()
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.nearBoardInit(url : url("/search/here/\(stationx)/\(stationy)"))
-        self.nearBoardInit(url : url("/search/here/\(stationx)/\(stationy)"))
+        //self.nearBoardInit(url : url("/search/here/\(stationx)/\(stationy)"))
         //print(nearStations, "입니다.", stationx)
         
     }
@@ -31,7 +32,7 @@ class NearStartTableVC: UITableViewController, APIService {
     
    
     ////////////////// Network
-    
+    /*
     func nearBoardInit(url : String){
         NearService.shareInstance.nearInit(url: url, completion: { [weak self] (result) in
             guard let `self` = self else { return }
@@ -50,6 +51,7 @@ class NearStartTableVC: UITableViewController, APIService {
             }
         })
     }
+ */
     //////////////////
     
 
@@ -68,7 +70,8 @@ class NearStartTableVC: UITableViewController, APIService {
         if section == 0 {
             return 1
         } else {
-            return nearStations.count
+            return subwayStation.count
+            //return nearStations.count
         }
     }
     
@@ -91,9 +94,8 @@ class NearStartTableVC: UITableViewController, APIService {
         } else{
             let cell = tableView.dequeueReusableCell(withIdentifier: NearStartTableCell2.reuseIdentifier, for: indexPath) as! NearStartTableCell2
             
-            cell.configure(station: nearStations[indexPath.row])
-            
-            
+            //cell.configure(station: nearStations[indexPath.row])
+            cell.nearstationLabel.text = subwayStation[indexPath.row]
             
             //cell.nearstationLabel.text = nearStations[indexPath.row].station_name
             cell.selectionStyle = .none
